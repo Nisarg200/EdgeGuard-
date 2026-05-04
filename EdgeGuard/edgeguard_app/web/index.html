@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdgeGuard Control Center</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Adaptive Privacy-Preserving Gateway</p>
+        <h1>EdgeGuard Control Center</h1>
+        <p class="hero-text">
+          Secure industrial LLM integration through semantic de-identification, adversarial filtering,
+          and isolated local retrieval before cloud reasoning.
+        </p>
+      </div>
+      <div class="hero-card">
+        <div class="status-line">
+          <span class="status-dot"></span>
+          <span id="backend-status">Checking backend...</span>
+        </div>
+        <div class="mode-banner">
+          <span class="mode-label">System Mode</span>
+          <span id="mode-badge" class="mode-badge neutral">CHECKING</span>
+        </div>
+        <div class="status-grid">
+          <div><span class="status-label">Provider</span><strong id="provider-name">-</strong></div>
+          <div><span class="status-label">Model</span><strong id="model-name">-</strong></div>
+          <div><span class="status-label">Mode</span><strong id="mode-name">-</strong></div>
+          <div><span class="status-label">Scenarios</span><strong id="scenario-count">-</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel query-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Interactive Demo</p>
+            <h2>Query Gateway</h2>
+          </div>
+          <button id="run-demo" class="ghost-button">Run Selected Scenario</button>
+        </div>
+
+        <div class="field-grid">
+          <label class="field">
+            <span>Requester Role</span>
+            <select id="role">
+              <option value="operations">Operations</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="security">Security</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Preset Scenario</span>
+            <select id="scenario-select">
+              <option value="">Choose a scenario</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Industrial Query</span>
+          <textarea id="query" rows="6" placeholder="Describe the plant issue, operator request, or attempted prompt attack..."></textarea>
+        </label>
+
+        <div class="action-row">
+          <button id="submit" class="primary-button">Process Through EdgeGuard</button>
+          <span class="helper-copy">The response panel will show every stage of the gateway pipeline.</span>
+        </div>
+      </section>
+
+      <aside class="panel scenario-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Demo Presets</p>
+            <h2>Presentation Scenarios</h2>
+          </div>
+        </div>
+        <div id="scenario-cards" class="scenario-cards"></div>
+      </aside>
+    </main>
+
+    <section class="metrics-strip">
+      <article class="metric-card"><span>Threat Status</span><strong id="metric-status">-</strong></article>
+      <article class="metric-card"><span>Threat Score</span><strong id="metric-threat">-</strong></article>
+      <article class="metric-card"><span>Redactions</span><strong id="metric-redactions">-</strong></article>
+      <article class="metric-card"><span>Latency</span><strong id="metric-latency">-</strong></article>
+      <article class="metric-card"><span>Retrieved Docs</span><strong id="metric-docs">-</strong></article>
+    </section>
+
+    <section class="results-layout">
+      <article class="panel">
+        <div class="panel-head"><div><p class="panel-kicker">Gateway Trace</p><h2>Pipeline Timeline</h2></div></div>
+        <div id="timeline" class="timeline empty-state">Run a query to see the gateway stages.</div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><div><p class="panel-kicker">Protected Payload</p><h2>Sanitized Query</h2></div></div>
+        <pre id="sanitized-output" class="code-block">No query processed yet.</pre>
+        <div class="subgrid">
+          <div>
+            <h3>Redactions</h3>
+            <ul id="redaction-list" class="chip-list empty-list"><li>No redactions yet.</li></ul>
+          </div>
+          <div>
+            <h3>Threat Reasons</h3>
+            <ul id="threat-list" class="chip-list empty-list"><li>No threat analysis yet.</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><div><p class="panel-kicker">Isolated Retrieval</p><h2>Approved Local Context</h2></div></div>
+        <div id="retrieval-panel" class="retrieval-grid empty-state">No documents retrieved yet.</div>
+      </article>
+
+      <article class="panel response-panel">
+        <div class="panel-head"><div><p class="panel-kicker">Backend Answer</p><h2>Final Response</h2></div></div>
+        <div class="response-banner">
+          <span class="mode-label">Response Mode</span>
+          <span id="response-badge" class="mode-badge neutral">WAITING</span>
+        </div>
+        <div id="response-meta" class="response-meta">Waiting for query...</div>
+        <pre id="response-output" class="response-copy">Process a scenario to get the final EdgeGuard response.</pre>
+      </article>
+    </section>
+
+    <section class="quote-strip">
+      <article class="panel quote-panel">
+        <p class="panel-kicker">Trustworthiness</p>
+        <blockquote>
+          "A model is not trustworthy because it sounds confident. It is trustworthy only when security,
+          privacy, and accountability stand guard before intelligence."
+        </blockquote>
+        <p class="quote-signoff">Built by Nissi and Sai</p>
+      </article>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
